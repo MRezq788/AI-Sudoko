@@ -1,3 +1,5 @@
+import time
+
 puzzle = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
     [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -85,6 +87,9 @@ def solvable(domains):
 
 
 def arc_consistency_solve(grid):
+
+    start_time = time.time()
+
     domains, arcs = create_sudoku_csp(grid)
     ones1, ones2 = -1, 0
 
@@ -93,7 +98,10 @@ def arc_consistency_solve(grid):
     print("----------------------------------------")
     print("----------------------------------------")
 
-    while solvable(domains) and ones1 != ones2:
+    if not solvable(domains):
+        return False
+
+    while ones1 != ones2:
         ones1 = ones2
         ones2 = 0
         apply_arc_consistency(domains, arcs)
@@ -103,7 +111,10 @@ def arc_consistency_solve(grid):
                     ones2 += 1
                     grid[row][col] = domains[(row, col)][0]
 
-    return ones2 == 81
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Execution time: {elapsed_time:.6f} seconds")
+    return True
 
 
 
