@@ -84,7 +84,7 @@ def solvable(domains):
     return True
 
 
-def solve_sudoku(grid):
+def arc_consistency_solve(grid):
     domains, arcs = create_sudoku_csp(grid)
     ones1, ones2 = -1, 0
 
@@ -106,7 +106,7 @@ for row in puzzle:
 print("----------------------------------------")
 print("----------------------------------------")
 
-solve_sudoku(puzzle)
+arc_consistency_solve(puzzle)
 
 for row in puzzle:
     print(row)
