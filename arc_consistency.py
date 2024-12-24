@@ -88,6 +88,11 @@ def arc_consistency_solve(grid):
     domains, arcs = create_sudoku_csp(grid)
     ones1, ones2 = -1, 0
 
+    for row in grid:
+        print(row)
+    print("----------------------------------------")
+    print("----------------------------------------")
+
     while solvable(domains) and ones1 != ones2:
         ones1 = ones2
         ones2 = 0
@@ -98,20 +103,22 @@ def arc_consistency_solve(grid):
                     ones2 += 1
                     grid[row][col] = domains[(row, col)][0]
 
+    return ones2 == 81
 
 
 
-for row in puzzle:
-    print(row)
-print("----------------------------------------")
-print("----------------------------------------")
 
-arc_consistency_solve(puzzle)
-
-for row in puzzle:
-    print(row)
-print("----------------------------------------")
-print("----------------------------------------")
+# for row in puzzle:
+#     print(row)
+# print("----------------------------------------")
+# print("----------------------------------------")
+#
+# arc_consistency_solve(puzzle)
+#
+# for row in puzzle:
+#     print(row)
+# print("----------------------------------------")
+# print("----------------------------------------")
 
 
 
