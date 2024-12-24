@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 from arc_consistency import arc_consistency_solve
-# from backtracking import is_valid_move, generate_puzzle
+from backtracking import is_valid_move, generate_puzzle
 from helpers import get_cell_value, set_cell_value
 
 def create_cell(frame, row, col, validate_callback):
